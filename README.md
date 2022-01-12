@@ -12,6 +12,9 @@ On Ubuntu:
 sudo apt install memcached
 ```
 
+
+git remote add origin2 https://github.com/rakib06/DRF-Chat-.git
+
 Install virtualenv
 ```
 pip install virtualenv

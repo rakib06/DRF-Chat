@@ -13,4 +13,7 @@ urlpatterns = [
     path('api/users', views.user_list, name='user-list'),
     path('logout', LogoutView.as_view(next_page='index'), name='logout'),
     path('register', views.register_view, name='register'),
-]
+    # room 
+    path('api/room/<int:sender>/<int:room>', views.chat_room, name='room-chat'),
+
+    ]

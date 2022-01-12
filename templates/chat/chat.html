@@ -2,7 +2,7 @@
 {% block body %}
 <nav class="blue lighten-3">
     <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">Chat</a>
+      <a href="#" class="brand-logo">User: {{ request.user.username }} {{ request.user.id }} </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="">{{ request.user.username }}</a></li>
           <li><a href="{% url 'logout' %}"><i class="material-icons">power_settings_new</i></a></li>
@@ -24,6 +24,7 @@
                 {% block messages %}
 
                 {% endblock %}
+
             </div>
             <form id="chat-box" class="form-group {% block hide %}hide{% endblock %}" method="post">
                 {% csrf_token %}

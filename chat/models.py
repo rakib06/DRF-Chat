@@ -4,7 +4,22 @@ from django.conf import settings
 import datetime
 
 from django.core.cache import cache
+from django.contrib.auth.models import User
 
+class Room(models.Model):
+  room_name = models.CharField(max_length=50)
+
+  def __str__(self):
+    return self.room_name
+
+# Create your models here.
+class ChatRoom(models.Model):
+  room_name = models.ForeignKey(Room, on_delete=models.CASCADE)
+  message = models.CharField(max_length=100)
+  sender = models.CharField(max_length=50)
+
+  def __str__(self):
+    return self.message
 
 
 class UserProfile(models.Model):
@@ -41,3 +56,8 @@ class Message(models.Model):
         ordering = ('timestamp',)
 
 
+
+class ClientUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    connected_type = models.CharField(max_length=100, default="bot") # [Bot, Human, ]
+    connected_agent = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agent')
